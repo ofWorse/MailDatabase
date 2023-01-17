@@ -2,12 +2,17 @@ package app.impl;
 
 import app.Operations;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 public class OperationsImpl implements Operations {
 
     private ReadFileImpl readFile;
+
+    public OperationsImpl() throws FileNotFoundException {
+        readFile = new ReadFileImpl("mailTest.txt");
+    }
 
     @Override
     public String displayMessageByID(int ID) throws IOException {

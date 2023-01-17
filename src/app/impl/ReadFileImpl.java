@@ -9,25 +9,34 @@ import java.io.IOException;
 
 public class ReadFileImpl implements ReadFile {
 
-    private FileReader fileReader;
+    private final FileReader fileReader;
 
-    public ReadFileImpl(String filePath) throws FileNotFoundException {
+    public ReadFileImpl(String filePath)
+            throws FileNotFoundException {
         fileReader = new FileReader(filePath);
     }
 
     @Override
-    public String readLinesFromFileByID(int ID) throws IOException {
+    public String readLinesFromFileByID(long ID)
+            throws IOException {
         var bufferedReader = new BufferedReader(fileReader);
         String line;
         while ((line = bufferedReader.readLine()) != null) {
             if (line.equals(Profiler.getNumberOfMail()))
-                return findAndReturnStringsOfMail();
+                return line;
         }
         return null;
     }
 
-    private String findAndReturnStringsOfMail() {
-
+    private String getStringsOfMail(BufferedReader bufferedReader)
+            throws IOException {
+        String finalString = "";
+        String line;
+        while ((line = bufferedReader.readLine()) != null
+                && !line.equals("\n")) {
+            finalString += line;
+        }
+        return finalString;
     }
 
 }

@@ -1,7 +1,7 @@
 package app.impl;
 
 public class Profiler {
-    private static final String numberOfMail = "[№]\s\\d";
+    private static final String numberOfMail = "№ \\d";
     private static final String mailAddress = "[a-zA-Z]@mail.ru";
     private static final String theme = "[^~`'\\./,!@#$%^&*()_+=-]";
 

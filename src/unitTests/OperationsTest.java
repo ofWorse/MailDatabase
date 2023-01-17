@@ -3,9 +3,11 @@ package unitTests;
 import app.impl.OperationsImpl;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,17 +17,13 @@ public class OperationsTest {
     private OperationsImpl operations;
 
     @Before
-    public void setUp() {
+    public void setUp() throws FileNotFoundException {
         operations = new OperationsImpl();
-    }
-
-    @After
-    public void tearDown() {
-        operations = null;
     }
 
     @Test
     public void displayMessageByID() throws IOException {
+        operations = new OperationsImpl();
         final int ID = 1;
         String actual = "Здравствуйте. Как ваши дела???";
         String testing = operations.displayMessageByID(ID);
