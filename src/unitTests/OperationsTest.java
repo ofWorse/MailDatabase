@@ -29,7 +29,8 @@ public class OperationsTest {
     }
 
     @Test
-    public void findMailsByMailSubject() {
+    public void findMailsByMailSubject() throws IOException {
+        operations = new OperationsImpl();
         String subject = "Работа";
 
         List<String> actualMails = new ArrayList<>();

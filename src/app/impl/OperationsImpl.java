@@ -20,8 +20,8 @@ public class OperationsImpl implements Operations {
     }
 
     @Override
-    public List<String> findMailsByMailSubject(String subject) {
-        return null;
+    public List<String> findMailsByMailSubject(String subject) throws IOException {
+        return readFile.getMessagesAsListFromMailSubject(subject);
     }
 
     @Override
