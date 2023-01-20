@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
@@ -16,10 +17,6 @@ public class OperationsTest {
 
     private OperationsImpl operations;
 
-    @Before
-    public void setUp() throws FileNotFoundException {
-        operations = new OperationsImpl();
-    }
 
     @Test
     public void displayMessageByID() throws IOException {

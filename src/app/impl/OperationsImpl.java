@@ -16,7 +16,7 @@ public class OperationsImpl implements Operations {
 
     @Override
     public String displayMessageByID(int ID) throws IOException {
-        return readFile.readLinesFromFileByID(ID);
+        return readFile.readMessageFromFileByID(ID);
     }
 
     @Override

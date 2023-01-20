@@ -17,26 +17,23 @@ public class ReadFileImpl implements ReadFile {
     }
 
     @Override
-    public String readLinesFromFileByID(long ID)
-            throws IOException {
+    public String readMessageFromFileByID(long ID) throws IOException {
         var bufferedReader = new BufferedReader(fileReader);
         String line;
         while ((line = bufferedReader.readLine()) != null) {
             if (line.equals(Profiler.getNumberOfMail()))
-                return line;
+                return getMessageFromFile(bufferedReader, Profiler.getSkipInterval());
         }
         return null;
     }
 
-    private String getStringsOfMail(BufferedReader bufferedReader)
+    private String getMessageFromFile(BufferedReader bufferedReader, int skipInterval)
             throws IOException {
-        String finalString = "";
-        String line;
-        while ((line = bufferedReader.readLine()) != null
-                && !line.equals("\n")) {
-            finalString += line;
-        }
-        return finalString;
+        for(int i = 0; i < skipInterval; i++)
+            bufferedReader.readLine();
+        bufferedReader.read(Profiler.getMail().toCharArray());
+        return bufferedReader.readLine();
     }
+
 
 }
